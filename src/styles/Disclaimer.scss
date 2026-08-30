@@ -1,0 +1,18 @@
+@import './variables.scss';
+
+.disclaimer {
+  background-color: $primary-dark;
+  border-top: 2px solid $secondary-color;
+  padding: 2rem 1rem;
+  margin-top: auto;
+  text-align: center;
+
+  .disclaimer-text {
+    color: $text-secondary;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+    font-style: italic;
+  }
+}

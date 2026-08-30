@@ -27,7 +27,7 @@ How do you make potentially hundreds of people collaboratively decide whether a 
 
 Below is what would be needed for a minimal MVP demo.
 
-[![Architecture Diagram](https://drive.google.com/file/d/1mqIh4k4pvdGgXBmUtBn-JwzPO_t4b9tq/view?usp=drive_link "Architecture Diagram")](https://drive.google.com/file/d/1mqIh4k4pvdGgXBmUtBn-JwzPO_t4b9tq/view?usp=drive_link "Architecture Diagram")
+[![Architecture Diagram](/src/assets/architecture.png "Architecture Diagram")](/src/assets/architecture.png "Architecture Diagram")
 
 ## Database Structure
 

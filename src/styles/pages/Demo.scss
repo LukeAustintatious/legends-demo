@@ -1,0 +1,144 @@
+@import '../variables.scss';
+
+.demo-page {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, $bg-dark 0%, $primary-dark 100%);
+
+  .demo-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 0;
+  }
+
+  .demo-header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    .demo-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, $text-primary 0%, $secondary-light 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+    }
+
+    .demo-subtitle {
+      color: $secondary-light;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  .demo-controls {
+    background-color: rgba($bg-card, 0.8);
+    border: 2px solid rgba($secondary-color, 0.3);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+    text-align: center;
+
+    .controls-label {
+      color: $text-secondary;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      .datasheet-button {
+        flex: 0 1 auto;
+        min-width: 180px;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+
+        &.MuiButton-contained {
+          background-color: $secondary-color !important;
+          color: $primary-dark !important;
+
+          &:hover {
+            background-color: $secondary-light !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba($secondary-color, 0.3);
+          }
+        }
+
+        &.MuiButton-outlined {
+          border-color: $secondary-dark !important;
+          color: $secondary-light !important;
+
+          &:hover {
+            border-color: $secondary-light !important;
+            background-color: rgba($secondary-color, 0.1);
+            transform: translateY(-2px);
+          }
+        }
+      }
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+
+        .datasheet-button {
+          width: 100%;
+          min-width: auto;
+        }
+      }
+    }
+  }
+
+  .datasheet-display {
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  .demo-footer {
+    background-color: rgba($primary-color, 0.3);
+    border-top: 2px solid $secondary-dark;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+
+    .footer-text {
+      color: $text-secondary;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .demo-header {
+      margin-bottom: 2rem;
+    }
+
+    .demo-controls {
+      padding: 1.5rem;
+    }
+
+    .datasheet-display {
+      margin-bottom: 2rem;
+    }
+
+    .demo-footer {
+      padding: 1.5rem;
+    }
+  }
+}
