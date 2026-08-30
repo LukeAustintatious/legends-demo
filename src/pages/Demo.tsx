@@ -2,22 +2,23 @@ import { useState } from 'react';
 import { Container, Box, Typography, Button } from '@mui/material';
 import { DatasheetViewer } from '../components/DatasheetViewer';
 import { Disclaimer } from '../components/Disclaimer';
-import { sampleOfficialDatasheet, sampleCommunityDatasheet, sampleUpcomingDatasheet } from '../data/sampleDatasheets';
-import { type DatasheetType } from '../data/sampleDatasheets';
+import { rhinoDatasheet, firstDreadnoughtDatasheet, secondDreadnoughtDatasheet } from '../data/sampleDatasheets';
 import '../styles/pages/Demo.scss';
 
-export const Demo = () => {
-  const [selectedDatasheet, setSelectedDatasheet] = useState<DatasheetType>('official');
+type Datasheets = 'Rhino' | 'Dreadnought1' | 'Dreadnought2';
 
-  const getDatasheetData = (type: DatasheetType) => {
+export const Demo = () => {
+  const [selectedDatasheet, setSelectedDatasheet] = useState<Datasheets>('Rhino');
+
+  const getDatasheetData = (type: Datasheets) => {
     switch (type) {
-      case 'community':
-        return sampleCommunityDatasheet;
-      case 'upcoming':
-        return sampleUpcomingDatasheet;
-      case 'official':
+      case 'Dreadnought1':
+        return firstDreadnoughtDatasheet;
+      case 'Dreadnought2':
+        return secondDreadnoughtDatasheet;
+      case 'Rhino':
       default:
-        return sampleOfficialDatasheet;
+        return rhinoDatasheet;
     }
   };
 
@@ -31,7 +32,7 @@ export const Demo = () => {
             Datasheet Demo
           </Typography>
           <Typography variant="h3" className="demo-subtitle">
-            Explore how different datasheet sources are displayed
+            Explore how datasheet could be updated and modified
           </Typography>
         </Box>
 
@@ -41,25 +42,25 @@ export const Demo = () => {
           </Typography>
           <Box className="button-group">
             <Button
-              variant={selectedDatasheet === 'official' ? 'contained' : 'outlined'}
-              onClick={() => setSelectedDatasheet('official')}
+              variant={selectedDatasheet === 'Rhino' ? 'contained' : 'outlined'}
+              onClick={() => setSelectedDatasheet('Rhino')}
               className="datasheet-button"
             >
-              Official Legends
+              Updated Rhino
             </Button>
             <Button
-              variant={selectedDatasheet === 'community' ? 'contained' : 'outlined'}
-              onClick={() => setSelectedDatasheet('community')}
+              variant={selectedDatasheet === 'Dreadnought1' ? 'contained' : 'outlined'}
+              onClick={() => setSelectedDatasheet('Dreadnought1')}
               className="datasheet-button"
             >
-              Community Modified
+              Dreadnought Revision 1
             </Button>
             <Button
-              variant={selectedDatasheet === 'upcoming' ? 'contained' : 'outlined'}
-              onClick={() => setSelectedDatasheet('upcoming')}
+              variant={selectedDatasheet === 'Dreadnought2' ? 'contained' : 'outlined'}
+              onClick={() => setSelectedDatasheet('Dreadnought2')}
               className="datasheet-button"
             >
-              Upcoming Release
+              Dreadnought Revision 2
             </Button>
           </Box>
         </Box>
@@ -68,16 +69,17 @@ export const Demo = () => {
           <DatasheetViewer
             title={currentDatasheet.title}
             description={currentDatasheet.description}
-            source={currentDatasheet.source}
+            revision={currentDatasheet.revision}
             data={currentDatasheet.data}
           />
         </Box>
 
         <Box className="demo-footer">
           <Typography variant="body1" className="footer-text">
-            This is a proof-of-concept demonstration. As the project develops, you'll be able to view 
-            complete datasheet histories, see exactly what changed in each revision, and participate in 
-            community voting on proposed changes.
+            This is a proof-of-concept demonstration. These datasheets are intentionally simplified for
+            demonstration purposes, and are not intended to represent a complete or balanced datasheet.
+            As the project develops, you'll be able to view complete datasheet histories, see exactly what 
+            changed in each revision, and participate in community voting on proposed changes.
           </Typography>
         </Box>
       </Container>

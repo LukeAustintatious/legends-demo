@@ -2,32 +2,24 @@ import { Card, CardContent, CardHeader, Box, Table, TableBody, TableCell, TableC
 import { type DatasheetData, type DatasheetType } from '../data/sampleDatasheets';
 import '../styles/DatasheetViewer.scss';
 
-const sourceColors: Record<DatasheetType, 'default' | 'success' | 'warning'> = {
+const sourceColors: Record<DatasheetType, 'default' | 'green' | 'red'> = {
   official: 'default',
-  community: 'success',
-  upcoming: 'warning',
+  community: 'green',
+  inherited: 'red',
 };
 
-const sourceLabels: Record<DatasheetType, string> = {
-  official: 'Official Legends',
-  community: 'Community Modified',
-  upcoming: 'Upcoming Release',
-};
-
-export const DatasheetViewer = ({ title, description, source, data }: DatasheetData) => {
+export const DatasheetViewer = ({ title, description, revision, data }: DatasheetData) => {
+  console.log(title, revision);
   return (
     <Card className="datasheet-card">
       <CardHeader
         title={title}
         subheader={description}
-        action={<Chip label={sourceLabels[source]} color={sourceColors[source]} variant="outlined" />}
+        action={<Chip label={`Revision ${revision}`} variant="outlined" />}
         className="datasheet-header"
       />
       <CardContent className="datasheet-content">
         <Box className="datasheet-section">
-          <Typography variant="h6" className="section-title">
-            Unit Profile
-          </Typography>
           <TableContainer>
             <Table size="small" className="profile-table">
               <TableHead>
@@ -41,14 +33,14 @@ export const DatasheetViewer = ({ title, description, source, data }: DatasheetD
                 </TableRow>
               </TableHead>
               <TableBody>
-                {data.profiles?.map((profile: any, idx: number) => (
+                {data.stats?.map((stat: any, idx: number) => (
                   <TableRow key={idx}>
-                    <TableCell>{profile.m}</TableCell>
-                    <TableCell>{profile.t}</TableCell>
-                    <TableCell>{profile.sv}</TableCell>
-                    <TableCell>{profile.w}</TableCell>
-                    <TableCell>{profile.ld}</TableCell>
-                    <TableCell>{profile.oc}</TableCell>
+                    <TableCell>{stat.m}</TableCell>
+                    <TableCell>{stat.t}</TableCell>
+                    <TableCell>{stat.sv}</TableCell>
+                    <TableCell>{stat.w}</TableCell>
+                    <TableCell>{stat.ld}</TableCell>
+                    <TableCell>{stat.oc}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -56,16 +48,13 @@ export const DatasheetViewer = ({ title, description, source, data }: DatasheetD
           </TableContainer>
         </Box>
 
-        {data.weapons && data.weapons.length > 0 && (
+        {data.rangedWeapons && data.rangedWeapons.length > 0 && (
           <Box className="datasheet-section">
-            <Typography variant="h6" className="section-title">
-              Weapons
-            </Typography>
             <TableContainer>
               <Table size="small" className="weapons-table">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Weapon</TableCell>
+                    <TableCell>Ranged Weapons</TableCell>
                     <TableCell>Range</TableCell>
                     <TableCell>A</TableCell>
                     <TableCell>BS</TableCell>
@@ -75,12 +64,45 @@ export const DatasheetViewer = ({ title, description, source, data }: DatasheetD
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {data.weapons.map((weapon: any, idx: number) => (
+                  {data.rangedWeapons.map((weapon: any, idx: number) => (
                     <TableRow key={idx}>
                       <TableCell>{weapon.name}</TableCell>
                       <TableCell>{weapon.range}</TableCell>
                       <TableCell>{weapon.attacks}</TableCell>
                       <TableCell>{weapon.bs}</TableCell>
+                      <TableCell>{weapon.strength}</TableCell>
+                      <TableCell>{weapon.ap}</TableCell>
+                      <TableCell>{weapon.damage}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Box>
+        )}
+
+        {data.meleeWeapons && data.meleeWeapons.length > 0 && (
+          <Box className="datasheet-section">
+            <TableContainer>
+              <Table size="small" className="weapons-table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Melee Weapons</TableCell>
+                    <TableCell>Range</TableCell>
+                    <TableCell>A</TableCell>
+                    <TableCell>WS</TableCell>
+                    <TableCell>S</TableCell>
+                    <TableCell>AP</TableCell>
+                    <TableCell>D</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {data.meleeWeapons.map((weapon: any, idx: number) => (
+                    <TableRow key={idx}>
+                      <TableCell>{weapon.name}</TableCell>
+                      <TableCell>{weapon.range}</TableCell>
+                      <TableCell>{weapon.attacks}</TableCell>
+                      <TableCell>{weapon.ws}</TableCell>
                       <TableCell>{weapon.strength}</TableCell>
                       <TableCell>{weapon.ap}</TableCell>
                       <TableCell>{weapon.damage}</TableCell>
@@ -113,7 +135,10 @@ export const DatasheetViewer = ({ title, description, source, data }: DatasheetD
         )}
 
         <Box className="datasheet-footer">
-          <Typography variant="body2" className="points">
+          <Typography variant="body1" className="footer-text">
+            <strong>Keywords:</strong> {data.keywords?.join(', ')}
+          </Typography>
+          <Typography variant="body1" className="footer-text">
             <strong>Points:</strong> {data.points}
           </Typography>
         </Box>
