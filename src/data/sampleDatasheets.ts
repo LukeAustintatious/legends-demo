@@ -1,12 +1,12 @@
 // Sample datasheet data structure
 // Replace this with your actual datasheet data
 
-export type DatasheetType = 'official' | 'community' | 'inherited';
+export type AlterationType = 'community' | 'inherited';
 
 export type DatasheetData = {
   title: string;
   description: string;
-  source: DatasheetType;
+  source: AlterationType;
   revision: number;
   data: any; // Replace this with the actual type
 };

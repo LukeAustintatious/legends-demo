@@ -1,15 +1,11 @@
 import { Card, CardContent, CardHeader, Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Chip } from '@mui/material';
-import { type DatasheetData, type DatasheetType } from '../data/sampleDatasheets';
+import { useMemo } from 'react';
+import { type DatasheetData } from '../data/sampleDatasheets';
+import { buildAlteredCellsMap, getAlteredCellSource, getSourceColorClass } from '../utils/alterationParser';
 import '../styles/DatasheetViewer.scss';
 
-const sourceColors: Record<DatasheetType, 'default' | 'green' | 'red'> = {
-  official: 'default',
-  community: 'green',
-  inherited: 'red',
-};
-
 export const DatasheetViewer = ({ title, description, revision, data }: DatasheetData) => {
-  console.log(title, revision);
+  const alteredCells = useMemo(() => buildAlteredCellsMap(data.alterations), [data.alterations]);
   return (
     <Card className="datasheet-card">
       <CardHeader
@@ -64,17 +60,32 @@ export const DatasheetViewer = ({ title, description, revision, data }: Datashee
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {data.rangedWeapons.map((weapon: any, idx: number) => (
-                    <TableRow key={idx}>
-                      <TableCell>{weapon.name}</TableCell>
-                      <TableCell>{weapon.range}</TableCell>
-                      <TableCell>{weapon.attacks}</TableCell>
-                      <TableCell>{weapon.bs}</TableCell>
-                      <TableCell>{weapon.strength}</TableCell>
-                      <TableCell>{weapon.ap}</TableCell>
-                      <TableCell>{weapon.damage}</TableCell>
-                    </TableRow>
-                  ))}
+                  {data.rangedWeapons.map((weapon: any, idx: number) => {
+                    const strengthSource = getAlteredCellSource(alteredCells, 'rangedWeapons', weapon.id, 'strength');
+                    const apSource = getAlteredCellSource(alteredCells, 'rangedWeapons', weapon.id, 'ap');
+                    
+                    return (
+                      <TableRow key={idx}>
+                        <TableCell>{weapon.name}</TableCell>
+                        <TableCell>{weapon.range}</TableCell>
+                        <TableCell>{weapon.attacks}</TableCell>
+                        <TableCell>{weapon.bs}</TableCell>
+                        <TableCell 
+                          className={strengthSource ? getSourceColorClass(strengthSource) : ''}
+                          data-alteration={strengthSource}
+                        >
+                          {weapon.strength}
+                        </TableCell>
+                        <TableCell 
+                          className={apSource ? getSourceColorClass(apSource) : ''}
+                          data-alteration={apSource}
+                        >
+                          {weapon.ap}
+                        </TableCell>
+                        <TableCell>{weapon.damage}</TableCell>
+                      </TableRow>
+                    );
+                  })}
                 </TableBody>
               </Table>
             </TableContainer>
@@ -97,17 +108,38 @@ export const DatasheetViewer = ({ title, description, revision, data }: Datashee
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {data.meleeWeapons.map((weapon: any, idx: number) => (
-                    <TableRow key={idx}>
-                      <TableCell>{weapon.name}</TableCell>
-                      <TableCell>{weapon.range}</TableCell>
-                      <TableCell>{weapon.attacks}</TableCell>
-                      <TableCell>{weapon.ws}</TableCell>
-                      <TableCell>{weapon.strength}</TableCell>
-                      <TableCell>{weapon.ap}</TableCell>
-                      <TableCell>{weapon.damage}</TableCell>
-                    </TableRow>
-                  ))}
+                  {data.meleeWeapons.map((weapon: any, idx: number) => {
+                    const attacksSource = getAlteredCellSource(alteredCells, 'meleeWeapons', weapon.id, 'attacks');
+                    const strengthSource = getAlteredCellSource(alteredCells, 'meleeWeapons', weapon.id, 'strength');
+                    const apSource = getAlteredCellSource(alteredCells, 'meleeWeapons', weapon.id, 'ap');
+                    
+                    return (
+                      <TableRow key={idx}>
+                        <TableCell>{weapon.name}</TableCell>
+                        <TableCell>{weapon.range}</TableCell>
+                        <TableCell 
+                          className={attacksSource ? getSourceColorClass(attacksSource) : ''}
+                          data-alteration={attacksSource}
+                        >
+                          {weapon.attacks}
+                        </TableCell>
+                        <TableCell>{weapon.ws}</TableCell>
+                        <TableCell 
+                          className={strengthSource ? getSourceColorClass(strengthSource) : ''}
+                          data-alteration={strengthSource}
+                        >
+                          {weapon.strength}
+                        </TableCell>
+                        <TableCell 
+                          className={apSource ? getSourceColorClass(apSource) : ''}
+                          data-alteration={apSource}
+                        >
+                          {weapon.ap}
+                        </TableCell>
+                        <TableCell>{weapon.damage}</TableCell>
+                      </TableRow>
+                    );
+                  })}
                 </TableBody>
               </Table>
             </TableContainer>
@@ -120,26 +152,39 @@ export const DatasheetViewer = ({ title, description, revision, data }: Datashee
               Abilities
             </Typography>
             <Box className="abilities-list">
-              {data.abilities.map((ability: any, idx: number) => (
-                <Box key={idx} className="ability">
-                  <Typography variant="subtitle2" className="ability-name">
-                    {ability.name}
-                  </Typography>
-                  <Typography variant="body2" className="ability-description">
-                    {ability.description}
-                  </Typography>
-                </Box>
-              ))}
+              {data.abilities.map((ability: any, idx: number) => {
+                const abilitySource = getAlteredCellSource(alteredCells, 'abilities', ability.id, '');
+                const abilityClasses = `ability ${abilitySource ? getSourceColorClass(abilitySource) : ''}`;
+                
+                return (
+                  <Box key={idx} className={abilityClasses} data-alteration={abilitySource}>
+                    <Typography variant="subtitle2" className="ability-name">
+                      {ability.name}
+                    </Typography>
+                    <Typography variant="body2" className="ability-description">
+                      {ability.description}
+                    </Typography>
+                  </Box>
+                );
+              })}
             </Box>
           </Box>
         )}
 
         <Box className="datasheet-footer">
+          {(() => {
+            const pointsSource = getAlteredCellSource(alteredCells, 'data', undefined, 'points');
+            return (
+              <Typography 
+                variant="body1" 
+                className={`footer-text ${pointsSource ? 'altered-points' : ''} ${pointsSource ? getSourceColorClass(pointsSource) : ''}`}
+              >
+                <strong>Points:</strong> {data.points}
+              </Typography>
+            );
+          })()}
           <Typography variant="body1" className="footer-text">
             <strong>Keywords:</strong> {data.keywords?.join(', ')}
-          </Typography>
-          <Typography variant="body1" className="footer-text">
-            <strong>Points:</strong> {data.points}
           </Typography>
         </Box>
       </CardContent>
