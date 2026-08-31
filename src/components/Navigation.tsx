@@ -4,7 +4,7 @@ import '../styles/Navigation.scss';
 
 export const Navigation = () => {
   return (
-    <AppBar position="sticky" className="navbar"> // todo: check with Leah
+    <AppBar position="static" className="navbar">
       <Toolbar>
         <Box className="nav-brand">
           <Link to="/" className="brand-link">

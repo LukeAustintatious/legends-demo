@@ -43,7 +43,7 @@
       }
     }
 
-    .profile-table,
+    .stats-table,
     .weapons-table {
       .MuiTableHead-root {
         background-color: rgba($primary-color, 0.5);
@@ -81,6 +81,30 @@
             }
           }
         }
+      }
+    }
+
+    .stats-table {
+      .MuiTableCell-root {
+        text-align: center;
+        flex: 1;
+      }
+    }
+
+    .weapons-table {
+      .MuiTableCell-root {
+        text-align: center;
+      }
+
+      .MuiTableHead-root .MuiTableCell-head:first-child,
+      .MuiTableBody-root .MuiTableCell-body:first-child {
+        text-align: left;
+        flex-grow: 1;
+      }
+
+      .MuiTableCell-root:not(:first-child) {
+        width: 80px;
+        flex-shrink: 0;
       }
     }
 

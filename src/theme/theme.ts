@@ -9,9 +9,9 @@ export const theme = createTheme({
       dark: '#0f2438',
     },
     secondary: {
-      main: '#d4af37', // Gold
-      light: '#e8c547',
-      dark: '#aa8c27',
+      main: '#fbb040', // Orange-gold
+      light: '#fcc878',
+      dark: '#d97e0d',
     },
     background: {
       default: '#0f1419', // Very dark grey-blue
@@ -23,23 +23,30 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Lora", serif',
     h1: {
+      fontFamily: '"League Gothic", sans-serif',
       fontSize: '2.5rem',
       fontWeight: 700,
+      letterSpacing: 1,
       color: '#ffffff',
     },
     h2: {
+      fontFamily: '"League Gothic", sans-serif',
       fontSize: '2rem',
       fontWeight: 600,
-      color: '#d4af37',
+      letterSpacing: 1,
+      color: '#fbb040',
     },
     h3: {
+      fontFamily: '"League Gothic", sans-serif',
       fontSize: '1.5rem',
       fontWeight: 600,
+      letterSpacing: 1,
       color: '#ffffff',
     },
     body1: {
+      fontFamily: '"Lora", serif',
       fontSize: '1rem',
       color: '#e0e0e0',
     },
@@ -48,22 +55,23 @@ export const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
+          fontFamily: '"League Gothic", sans-serif',
           textTransform: 'none',
           fontWeight: 600,
         },
         contained: {
-          backgroundColor: '#d4af37',
+          backgroundColor: '#fbb040',
           color: '#0f1419',
           '&:hover': {
-            backgroundColor: '#e8c547',
+            backgroundColor: '#fcc878',
           },
         },
         outlined: {
-          borderColor: '#d4af37',
-          color: '#d4af37',
+          borderColor: '#fbb040',
+          color: '#fbb040',
           '&:hover': {
-            borderColor: '#e8c547',
-            color: '#e8c547',
+            borderColor: '#fcc878',
+            color: '#fcc878',
           },
         },
       },
@@ -72,7 +80,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: '#1a2332',
-          borderColor: '#d4af37',
+          borderColor: '#fbb040',
         },
       },
     },
@@ -80,7 +88,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: '#1a3a52',
-          borderBottom: '2px solid #d4af37',
+          borderBottom: '2px solid #fbb040',
         },
       },
     },

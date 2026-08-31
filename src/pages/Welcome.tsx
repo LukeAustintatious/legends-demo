@@ -1,6 +1,7 @@
 import { Container, Box, Typography, Button, Paper } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Disclaimer } from '../components/Disclaimer';
+import logoColourPng from '../assets/logo-colour.png';
 import '../styles/pages/Welcome.scss';
 
 export const Welcome = () => {
@@ -10,9 +11,7 @@ export const Welcome = () => {
     <Box className="welcome-page">
       <Container maxWidth="lg" className="welcome-container">
         <Box className="welcome-header">
-          <Typography variant="h1" className="welcome-title">
-            Legends Never Die
-          </Typography>
+          <img src={logoColourPng} alt="Legends Never Die Logo" className="logo" />
           <Typography variant="h3" className="welcome-subtitle">
               A Community-Driven Rules Repository for Warhammer Legends
           </Typography>
@@ -31,7 +30,7 @@ export const Welcome = () => {
             </Typography>
             <Typography variant="body1" className="concept-text">
               Rather than a wiki where anyone can just silently changes a number,
-              you'd get complete history, diffs, attribution and rollback.
+              this site would contain complete history, diffs, attribution and rollback.
               <strong>Think GitHub for Warhammer Legends datasheets.</strong>
             </Typography>
             <Typography variant="body1" className="concept-text">

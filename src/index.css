@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +8,7 @@
 
 body {
   margin: 0;
-  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Lora', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #0f1419;
@@ -23,9 +25,9 @@ html, body, #root {
   flex-direction: column;
   min-height: 100vh;
 }
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'League Gothic', sans-serif;
 }
 
 code {

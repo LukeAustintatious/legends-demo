@@ -3,7 +3,6 @@
 .welcome-page {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   background: linear-gradient(135deg, $bg-dark 0%, $primary-dark 100%);
 
   .welcome-container {
@@ -17,20 +16,13 @@
     text-align: center;
     margin: 3rem 0 4rem;
 
-    .welcome-title {
-      font-size: 3.5rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, $text-primary 0%, $secondary-light 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      padding-bottom: 1rem;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-      letter-spacing: -0.5px;
-
-      @media (max-width: 768px) {
-        font-size: 2.5rem;
-      }
+    .logo {
+      max-height: 14rem;
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      padding-bottom: 1.5rem;
+      object-fit: contain;
     }
 
     .welcome-subtitle {
@@ -60,13 +52,6 @@
     border: 2px solid rgba($secondary-color, 0.3);
     border-radius: 12px;
     padding: 2.5rem !important;
-    transition: all 0.3s ease;
-
-    &:hover {
-      border-color: $secondary-light;
-      box-shadow: 0 12px 24px rgba($secondary-color, 0.2);
-      transform: translateY(-4px);
-    }
 
     .section-heading {
       color: $secondary-light;
@@ -143,8 +128,9 @@
       .cta-button {
         background-color: $secondary-color !important;
         color: $primary-dark !important;
-        font-weight: 700;
-        font-size: 1.05rem;
+        font-weight: 500;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
         padding: 1rem 2.5rem;
         border-radius: 8px;
         transition: all 0.3s ease;

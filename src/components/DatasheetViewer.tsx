@@ -17,7 +17,7 @@ export const DatasheetViewer = ({ title, description, revision, data }: Datashee
       <CardContent className="datasheet-content">
         <Box className="datasheet-section">
           <TableContainer>
-            <Table size="small" className="profile-table">
+            <Table size="small" className="stats-table">
               <TableHead>
                 <TableRow>
                   <TableCell>M</TableCell>
