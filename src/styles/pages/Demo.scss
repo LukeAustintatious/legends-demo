@@ -46,6 +46,15 @@
     backdrop-filter: blur(10px);
     text-align: center;
 
+    .description-text {
+      color: $text-secondary;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 800px;
+      padding-bottom: 1.5rem;
+      margin: 0 auto;
+    }
+
     .controls-label {
       color: $text-secondary;
       font-size: 1rem;
@@ -110,22 +119,6 @@
     width: 100%;
   }
 
-  .demo-footer {
-    background-color: rgba($primary-color, 0.3);
-    border-top: 2px solid $secondary-dark;
-    border-radius: 8px;
-    padding: 2rem;
-    text-align: center;
-
-    .footer-text {
-      color: $text-secondary;
-      font-size: 1.05rem;
-      line-height: 1.8;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-  }
-
   @media (max-width: 768px) {
     .demo-header {
       margin-bottom: 2rem;
@@ -137,10 +130,6 @@
 
     .datasheet-display {
       margin-bottom: 2rem;
-    }
-
-    .demo-footer {
-      padding: 1.5rem;
     }
   }
 }

@@ -37,6 +37,12 @@ export const Demo = () => {
         </Box>
 
         <Box className="demo-controls">
+          <Typography variant="body1" className="description-text">
+            This is a proof-of-concept demonstration. These datasheets are intentionally simplified for
+            demonstration purposes, and are not intended to represent a complete or balanced datasheet.
+            As the project develops, you'll be able to view complete datasheet revision histories, see 
+            exactly what changed in each revision, and participate in community voting on proposed changes.
+          </Typography>
           <Typography variant="body1" className="controls-label">
             Select a datasheet to view:
           </Typography>
@@ -69,18 +75,10 @@ export const Demo = () => {
           <DatasheetViewer
             title={currentDatasheet.title}
             description={currentDatasheet.description}
+            source={currentDatasheet.source}
             revision={currentDatasheet.revision}
             data={currentDatasheet.data}
           />
-        </Box>
-
-        <Box className="demo-footer">
-          <Typography variant="body1" className="footer-text">
-            This is a proof-of-concept demonstration. These datasheets are intentionally simplified for
-            demonstration purposes, and are not intended to represent a complete or balanced datasheet.
-            As the project develops, you'll be able to view complete datasheet histories, see exactly what 
-            changed in each revision, and participate in community voting on proposed changes.
-          </Typography>
         </Box>
       </Container>
 

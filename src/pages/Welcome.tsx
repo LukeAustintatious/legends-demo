@@ -46,27 +46,27 @@ export const Welcome = () => {
             <ul className="features-list">
               <li>
                 <Typography variant="body1">
-                  <strong>Version Control:</strong> Complete history of every change with full attribution
+                  <strong>Version Control:</strong> Complete history of every change with full attribution.
                 </Typography>
               </li>
               <li>
                 <Typography variant="body1">
-                  <strong>Community Voting:</strong> Transparent, democratic process for balance changes
+                  <strong>Community Voting:</strong> Transparent, democratic process for balance changes.
                 </Typography>
               </li>
               <li>
                 <Typography variant="body1">
-                  <strong>Schema-Driven:</strong> Extensible design supporting multiple games and editions
+                  <strong>Schema-Driven:</strong> Extensible design supporting multiple games and editions.
                 </Typography>
               </li>
               <li>
                 <Typography variant="body1">
-                  <strong>Official vs Community:</strong> Clear distinction between Games Workshop rules and community modifications
+                  <strong>Official vs Community:</strong> Clear distinction between Games Workshop rules and community modifications.
                 </Typography>
               </li>
               <li>
                 <Typography variant="body1">
-                  <strong>Transparent:</strong> Every change, discussion, and decision is tracked and attributable
+                  <strong>Transparent:</strong> Every change, discussion, and decision is tracked and attributable.
                 </Typography>
               </li>
             </ul>
