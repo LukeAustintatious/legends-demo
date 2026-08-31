@@ -84,11 +84,11 @@ export const Welcome = () => {
                 variant="contained"
                 size="large"
                 className="cta-button"
-                href="https://discord.gg/legends"
+                href="https://discord.gg/XbmMvvTtb"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Join Discord (Link TBD)
+                Join Discord
               </Button>
             </Paper>
 
