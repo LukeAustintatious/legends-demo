@@ -1,6 +1,7 @@
 import { Container, Box, Typography, Button, Paper } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Disclaimer } from '../components/Disclaimer';
+import { RevisionStepper } from '../components/RevisionStepper';
 import logoColour from '../assets/logo-colour.svg';
 import '../styles/pages/Welcome.scss';
 
@@ -38,6 +39,8 @@ export const Welcome = () => {
               than a hard-coded 40K website. That means it could eventually support new editions or even other games.
             </Typography>
           </Paper>
+
+          <RevisionStepper />
 
           <Paper elevation={3} className="features-card">
             <Typography variant="h2" className="section-heading">

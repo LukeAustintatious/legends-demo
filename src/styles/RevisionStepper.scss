@@ -1,0 +1,208 @@
+@import './variables.scss';
+
+.revision-stepper-card {
+  background-color: rgba($bg-card, 0.8) !important;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba($secondary-color, 0.3);
+  border-radius: 12px;
+  padding: 2.5rem !important;
+
+  .section-heading {
+    color: $secondary-light;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .revision-stepper {
+    padding: 1rem 0 2rem 0;
+    background: transparent;
+    justify-content: center;
+    gap: 1rem;
+
+    .MuiStep-root {
+      flex: 0 0 auto;
+      padding: 0;
+    }
+
+    .step-button {
+      color: rgba($text-secondary, 0.7);
+      font-size: 1.25rem;
+      padding: 0.5rem 0;
+      min-width: auto;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: $secondary-light;
+      }
+
+      &.Mui-disabled {
+        color: rgba($text-secondary, 0.3);
+      }
+
+      .MuiStepIcon-text {
+        fill: $primary-dark;
+        font-weight: 500;
+      }
+
+      .MuiStepLabel-label {
+        color: inherit;
+        font-weight: 600;
+        text-transform: none;
+        display: none;
+
+        @media (min-width: 769px) {
+          display: block;
+        }
+      }
+
+      .MuiSvgIcon-root {
+        width: 2rem;
+        height: 2rem;
+        color: rgba($secondary-color, 0.5);
+        transition: all 0.3s ease;
+
+        &.Mui-active {
+          width: 2.5rem;
+          height: 2.5rem;
+          color: $secondary-light;
+        }
+
+        &.Mui-completed {
+          color: $secondary-color;
+        }
+      }
+    }
+
+    .MuiStepConnector-root {
+      top: 1rem;
+      left: 0;
+      right: 0;
+      margin: 0 0.5rem;
+
+      .MuiStepConnector-line {
+        border-color: rgba($secondary-color, 0.2);
+        border-top-width: 2px;
+      }
+
+      &.Mui-active {
+        .MuiStepConnector-line {
+          border-color: rgba($secondary-color, 0.5);
+        }
+      }
+
+      &.Mui-completed {
+        .MuiStepConnector-line {
+          border-color: $secondary-color;
+        }
+      }
+    }
+  }
+
+  .step-content-wrapper {
+    text-align: center;
+    margin: 2rem 0;
+    min-height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .step-description {
+      color: $text-secondary;
+      line-height: 1.8;
+      font-size: 1.05rem;
+      max-width: 600px;
+    }
+  }
+
+  .stepper-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    .nav-button {
+      color: $secondary-light !important;
+      border-color: rgba($secondary-color, 0.5) !important;
+      font-size: 1.25rem;
+      letter-spacing: 1px;
+      font-weight: 400;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+
+      &.MuiButton-outlined {
+        border: 2px solid rgba($secondary-color, 0.5);
+      }
+
+      &:hover:not(.Mui-disabled) {
+        background-color: rgba($secondary-color, 0.1);
+        border-color: $secondary-light !important;
+      }
+
+      &.next-button {
+        background-color: rgba($secondary-color, 0.2) !important;
+        color: $text-primary !important;
+
+        &:hover:not(.Mui-disabled) {
+          background-color: rgba($secondary-color, 0.35) !important;
+        }
+      }
+
+      &.Mui-disabled {
+        color: rgba($text-secondary, 0.3) !important;
+        border-color: rgba($secondary-color, 0.1) !important;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem !important;
+
+    .section-heading {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .revision-stepper {
+      padding: 1rem 0 1.5rem 0;
+      gap: 0.75rem;
+
+      .step-button {
+        .MuiSvgIcon-root {
+          width: 1.75rem;
+          height: 1.75rem;
+
+          &.Mui-active {
+            width: 2rem;
+            height: 2rem;
+          }
+        }
+      }
+
+      .MuiStepConnector-root {
+        margin: 0 0.25rem;
+      }
+    }
+
+    .step-content-wrapper {
+      margin: 1.5rem 0;
+      min-height: 3.5rem;
+
+      .step-description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+    }
+
+    .stepper-controls {
+      gap: 0.75rem;
+
+      .nav-button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
