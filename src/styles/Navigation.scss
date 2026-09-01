@@ -61,4 +61,32 @@
       background-color: rgba($secondary-color, 0.1);
     }
   }
+
+  .social-icon-button {
+    color: $text-primary !important;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: $secondary-light !important;
+      transform: scale(1.15);
+    }
+
+    svg {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      gap: 1rem;
+
+        .social-icon-button {
+        padding: 0.5rem !important;
+
+        svg {
+          font-size: 1.25rem;
+        }
+      }
+    }
+  }
 }

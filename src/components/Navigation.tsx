@@ -1,5 +1,8 @@
-import { AppBar, Toolbar, Box, Button } from '@mui/material';
+import { AppBar, Toolbar, Box, Button, IconButton } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDiscord, faKoFi } from '@fortawesome/free-brands-svg-icons';
+import { EXTERNAL_LINKS } from '../constants/links';
 import '../styles/Navigation.scss';
 
 export const Navigation = () => {
@@ -18,6 +21,26 @@ export const Navigation = () => {
           <Button component={Link} to="/demo" color="inherit" className="nav-button">
             Demo
           </Button>
+          <IconButton
+            href={EXTERNAL_LINKS.DISCORD_SERVER}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-icon-button"
+            title="Join our Discord"
+            size="large"
+          >
+            <FontAwesomeIcon icon={faDiscord} />
+          </IconButton>
+          <IconButton
+            href={EXTERNAL_LINKS.KO_FI_PAGE}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-icon-button"
+            title="Support on Ko-fi"
+            size="large"
+          >
+            <FontAwesomeIcon icon={faKoFi} />
+          </IconButton>
         </Box>
       </Toolbar>
     </AppBar>
