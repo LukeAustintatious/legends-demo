@@ -1,7 +1,7 @@
 import { Container, Box, Typography, Button, Paper } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Disclaimer } from '../components/Disclaimer';
-import logoColourPng from '../assets/logo-colour.png';
+import logoColour from '../assets/logo-colour.svg';
 import '../styles/pages/Welcome.scss';
 
 export const Welcome = () => {
@@ -11,7 +11,7 @@ export const Welcome = () => {
     <Box className="welcome-page">
       <Container maxWidth="lg" className="welcome-container">
         <Box className="welcome-header">
-          <img src={logoColourPng} alt="Legends Never Die Logo" className="logo" />
+          <img src={logoColour} alt="Legends Never Die Logo" className="logo" />
           <Typography variant="h3" className="welcome-subtitle">
               A Community-Driven Rules Repository for Warhammer Legends
           </Typography>
