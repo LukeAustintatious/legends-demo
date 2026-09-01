@@ -69,6 +69,17 @@ export const Demo = () => {
               Dreadnought Revision 2
             </Button>
           </Box>
+          
+          <Box className="highlighting-key">
+            <Box className="key-item">
+              <Box className="key-indicator inherited"></Box>
+              <Typography variant="body2">Inherited from live profile</Typography>
+            </Box>
+            <Box className="key-item">
+              <Box className="key-indicator community"></Box>
+              <Typography variant="body2">Community voted change</Typography>
+            </Box>
+          </Box>
         </Box>
 
         <Box className="datasheet-display">
