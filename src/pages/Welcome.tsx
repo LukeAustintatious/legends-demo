@@ -32,6 +32,8 @@ export const Welcome = () => {
             <Typography variant="body1" className="concept-text">
               Rather than a wiki where anyone can just silently changes a number,
               this site would contain complete history, diffs, attribution and rollback.
+            </Typography>
+            <Typography variant="body1" className="concept-text">
               <strong>Think GitHub for Warhammer Legends datasheets.</strong>
             </Typography>
             <Typography variant="body1" className="concept-text">
